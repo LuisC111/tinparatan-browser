@@ -1,0 +1,144 @@
+--- a/chrome/browser/resources/new_tab_page/app.html
++++ b/chrome/browser/resources/new_tab_page/app.html
+@@ -1,4 +1,13 @@
+ <div id="content">
++  <div id="tinparatanHero">
++    <img id="tinparatanLogo" alt=""
++        src="chrome://theme/current-channel-logo@2x">
++    <div id="tinparatanWordmark"><span class="prompt">&gt;</span>tinparatan<span class="cursor">_</span></div>
++    <input id="tinparatanSearch" spellcheck="false" autocomplete="off"
++        aria-label="Search or type an address"
++        placeholder="Search or type an address"
++        @keydown="${this.onTinparatanSearchKeydown_}">
++  </div>
+   ${this.lazyRender_ ? html`
+     ${this.shortcutsEnabled_ ? html`
+       <cr-most-visited id="mostVisited" .theme="${this.theme_?.mostVisited || null}"
+--- a/chrome/browser/resources/new_tab_page/app.css
++++ b/chrome/browser/resources/new_tab_page/app.css
+@@ -563,3 +563,78 @@
+     -webkit-mask-image: url(icons/link.svg);
+   }
+ }
++
++/* Tinparatan new-tab hero. Colors follow the NTP foreground so the wordmark
++   stays readable on light themes and on dark or image backgrounds. */
++#tinparatanHero {
++  align-items: center;
++  display: flex;
++  flex-direction: column;
++  margin-bottom: 8px;
++  user-select: none;
++}
++
++#tinparatanLogo {
++  height: auto;
++  margin-bottom: 18px;
++  width: 132px;
++}
++
++#tinparatanWordmark {
++  color: var(--color-new-tab-page-most-visited-foreground, #fff);
++  font-family: "Cascadia Mono", "Cascadia Code", Consolas, "Liberation Mono",
++      ui-monospace, monospace;
++  font-size: 40px;
++  font-weight: 700;
++  letter-spacing: 0;
++  line-height: 1;
++}
++
++#tinparatanWordmark .prompt,
++#tinparatanWordmark .cursor {
++  color: #ff2b2b;
++}
++
++#tinparatanWordmark .cursor {
++  animation: tinparatan-cursor 1.05s steps(1) infinite;
++}
++
++@keyframes tinparatan-cursor {
++  50% {
++    opacity: 0;
++  }
++}
++
++#tinparatanSearch {
++  appearance: none;
++  background: color-mix(
++      in srgb,
++      var(--color-new-tab-page-most-visited-foreground, #fff) 8%,
++      transparent);
++  border: 1px solid color-mix(
++      in srgb,
++      var(--color-new-tab-page-most-visited-foreground, #fff) 22%,
++      transparent);
++  border-radius: 999px;
++  box-sizing: border-box;
++  color: var(--color-new-tab-page-most-visited-foreground, #fff);
++  font-family: inherit;
++  font-size: 15px;
++  height: 44px;
++  margin-top: 26px;
++  outline: none;
++  padding: 0 20px;
++  user-select: text;
++  width: min(640px, 78vw);
++}
++
++#tinparatanSearch::placeholder {
++  color: color-mix(
++      in srgb,
++      var(--color-new-tab-page-most-visited-foreground, #fff) 55%,
++      transparent);
++}
++
++#tinparatanSearch:focus {
++  border-color: color-mix(in srgb, #ff2b2b 70%, transparent);
++}
+--- a/chrome/browser/resources/new_tab_page/app.ts
++++ b/chrome/browser/resources/new_tab_page/app.ts
+@@ -113,6 +113,7 @@
+ const COMPOSEBOX_INERT_ALLOWLIST = [
+   '#logo',
+   '#searchboxContainer',
++  '#tinparatanHero',
+ ];
+ 
+ export const CUSTOMIZE_CHROME_BUTTON_ELEMENT_ID =
+@@ -1590,6 +1591,36 @@
+   private hasRealboxOverride(action?: FuseboxAction): boolean {
+     return !!action && action?.searchboxOverride === SearchboxOverride.kRealbox;
+   }
++
++  /**
++   * Hardcoded new-tab query. DuckDuckGo is Helium's default engine. A later
++   * version should read the profile search engine, and the wordmark below the
++   * logo, from a preference passed through loadTimeData.
++   */
++  protected onTinparatanSearchKeydown_(event: KeyboardEvent) {
++    if (event.key !== 'Enter') {
++      return;
++    }
++    const query = (event.target as HTMLInputElement).value.trim();
++    if (!query) {
++      return;
++    }
++    WindowProxy.getInstance().navigate(this.tinparatanDestinationForQuery_(query));
++  }
++
++  private tinparatanDestinationForQuery_(query: string): string {
++    if (/^[a-zA-Z][a-zA-Z0-9+.-]*:/.test(query)) {
++      return query;
++    }
++    const looksLikeHost =
++        /^(localhost(:\d+)?([/?#].*)?|[\w.-]+\.[a-zA-Z]{2,}([/?#].*)?)$/
++            .test(query) &&
++        !query.includes(' ');
++    if (looksLikeHost) {
++      return `https://${query}`;
++    }
++    return 'https://duckduckgo.com/?q=' + encodeURIComponent(query);
++  }
+ }
+ 
+ declare global {

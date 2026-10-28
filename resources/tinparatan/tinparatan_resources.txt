@@ -1,0 +1,40 @@
+# source (relative to resources/tinparatan/) destination (relative to the Chromium tree)
+# Applied AFTER resources/helium_resources.txt so these overwrite Helium's logos.
+# Vector .icon files are intentionally absent: see TINPARATAN.md.
+
+branding/product_logo.png components/resources/default_100_percent/chromium/product_logo.png
+branding/product_logo_white.png components/resources/default_100_percent/chromium/product_logo_white.png
+branding/product_logo_200.png components/resources/default_200_percent/chromium/product_logo.png
+branding/product_logo_white_200.png components/resources/default_200_percent/chromium/product_logo_white.png
+
+branding/product_logo_22_mono.png chrome/app/theme/chromium/product_logo_22_mono.png
+branding/product_logo.svg chrome/app/theme/chromium/product_logo.svg
+
+generated/product_icon/16x16.png chrome/app/theme/chromium/product_logo_16.png
+generated/product_icon/24x24.png chrome/app/theme/chromium/product_logo_24.png
+generated/product_icon/48x48.png chrome/app/theme/chromium/product_logo_48.png
+generated/product_icon/64x64.png chrome/app/theme/chromium/product_logo_64.png
+generated/product_icon/128x128.png chrome/app/theme/chromium/product_logo_128.png
+generated/product_icon/256x256.png chrome/app/theme/chromium/product_logo_256.png
+
+generated/product_icon/16x16.png chrome/app/theme/default_100_percent/chromium/product_logo_16.png
+generated/product_icon/32x32.png chrome/app/theme/default_100_percent/chromium/product_logo_32.png
+
+generated/product_icon/32x32.png chrome/app/theme/default_200_percent/chromium/product_logo_16.png
+generated/product_icon/64x64.png chrome/app/theme/default_200_percent/chromium/product_logo_32.png
+
+generated/product_icon/24x24.png chrome/app/theme/chromium/linux/product_logo_24.png
+generated/product_icon/48x48.png chrome/app/theme/chromium/linux/product_logo_48.png
+generated/product_icon/64x64.png chrome/app/theme/chromium/linux/product_logo_64.png
+generated/product_icon/128x128.png chrome/app/theme/chromium/linux/product_logo_128.png
+generated/product_icon/256x256.png chrome/app/theme/chromium/linux/product_logo_256.png
+
+generated/product_icon/16x16.png chrome/app/theme/default_100_percent/chromium/linux/product_logo_16.png
+generated/product_icon/32x32.png chrome/app/theme/default_100_percent/chromium/linux/product_logo_32.png
+
+favicons/favicon_ntp_16.png chrome/app/theme/default_100_percent/common/favicon_ntp.png
+favicons/favicon_ntp_32.png chrome/app/theme/default_200_percent/common/favicon_ntp.png
+
+win/app.ico chrome/app/theme/chromium/win/chromium.ico
+win/document.ico chrome/app/theme/chromium/win/chromium_doc.ico
+win/document.ico chrome/app/theme/chromium/win/chromium_pdf.ico

@@ -1,0 +1,18 @@
+--- a/chrome/app/theme/chromium/BRANDING
++++ b/chrome/app/theme/chromium/BRANDING
+@@ -1,7 +1,7 @@
+-COMPANY_FULLNAME=The Helium Authors
+-COMPANY_SHORTNAME=The Helium Authors
+-PRODUCT_FULLNAME=Helium
+-PRODUCT_SHORTNAME=Helium
+-PRODUCT_INSTALLER_FULLNAME=Helium Installer
+-PRODUCT_INSTALLER_SHORTNAME=Helium Installer
+-COPYRIGHT=Copyright @LASTCHANGE_YEAR@ The Helium Authors. All rights reserved.
++COMPANY_FULLNAME=The Tinparatan Authors
++COMPANY_SHORTNAME=Tinparatan
++PRODUCT_FULLNAME=Tinparatan
++PRODUCT_SHORTNAME=Tinparatan
++PRODUCT_INSTALLER_FULLNAME=Tinparatan Installer
++PRODUCT_INSTALLER_SHORTNAME=Tinparatan Installer
++COPYRIGHT=Copyright @LASTCHANGE_YEAR@ The Tinparatan Authors. All rights reserved.
+ MAC_BUNDLE_ID=net.imput.helium

@@ -368,3 +368,9 @@ helium/ui/compact-debugger-warning.patch
 helium/ui/progress-bar.patch
 helium/ui/exclusive-access-bubble.patch
 helium/ui/hide-page-actions-flag.patch
+
+tinparatan/rebrand-product-name.patch
+tinparatan/about-product-logo-size.patch
+tinparatan/webstore-product-name.patch
+tinparatan/product-icon-sprite.patch
+tinparatan/new-tab-page.patch
