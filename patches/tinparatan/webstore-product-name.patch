@@ -1,0 +1,11 @@
+--- a/components/extstore_fixups/chrome-webstore.js
++++ b/components/extstore_fixups/chrome-webstore.js
+@@ -20,7 +20,7 @@
+ 
+   const replaceDownloadButtonText = (el) => {
+     if (el.nodeType === Node.TEXT_NODE) {
+-      const replacement = el.nodeValue.replace(CHROME_NAME_REGEX, 'Helium');
++      const replacement = el.nodeValue.replace(CHROME_NAME_REGEX, 'Tinparatan');
+       if (replacement === el.nodeValue) {
+         return false;
+       }

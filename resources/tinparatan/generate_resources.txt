@@ -1,0 +1,10 @@
+# input size output
+# Same line format as resources/generate_resources.txt. Paths are relative to
+# resources/tinparatan/. Regenerate with resources/tinparatan/generate.py.
+source/logo-1024.png 256 generated/product_icon/256x256.png
+source/logo-1024.png 128 generated/product_icon/128x128.png
+source/logo-1024.png 64 generated/product_icon/64x64.png
+source/logo-1024.png 48 generated/product_icon/48x48.png
+source/logo-1024.png 32 generated/product_icon/32x32.png
+source/logo-1024.png 24 generated/product_icon/24x24.png
+source/logo-1024.png 16 generated/product_icon/16x16.png

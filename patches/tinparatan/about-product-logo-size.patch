@@ -1,0 +1,13 @@
+--- a/chrome/browser/resources/settings/about_page/about_page.css
++++ b/chrome/browser/resources/settings/about_page/about_page.css
+@@ -26,7 +26,10 @@
+ }
+ 
+ #productLogo {
++  height: 48px;
+   margin-inline-end: var(--about-page-image-space);
++  object-fit: contain;
++  width: 48px;
+ }
+ 
+ .icon-container {
